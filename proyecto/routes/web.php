@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     //return view('welcome');
     return view('home');
-});
+})->name('home');  //se añade este nombre para construir los enlaces
 
 Route::get('blog', function () {
     //return view('welcome');
@@ -37,16 +37,16 @@ Route::get('blog', function () {
     ];
 
     return view('blog', ['posts' => $posts]);
-});
+})->name('blog');
 
 Route::get('blog/{slug}', function ($slug) {
     //Consulta a base de datos
     $post = $slug;
 
     return view('post', ['post' => $post]);
-});
+})->name('post');
 
 Route::get('buscar', function (Request $request) {
     //Consulta a base de datos
     return $request->all();
-});
+})->name('buscar');
