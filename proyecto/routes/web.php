@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,32 +23,22 @@ use Illuminate\Support\Facades\Route;
  * Route:put    | Actualizar
  */
 
-Route::get('/', function () {
-    //return view('welcome');
-    return view('home');
-})->name('home');  //se añade este nombre para construir los enlaces
+/*
+Route::get('/', [PageController::class, 'home'] )->name('home');  //se añade este nombre para construir los enlaces
 
-Route::get('blog', function () {
-    //return view('welcome');
+Route::get('blog', [PageController::class, 'blog'])->name('blog');
 
-    //Consulta a base de datos
-    $posts = [
-        ['id' => 1, 'title' => 'PHP',     'slug' => 'php'],
-        ['id' => 2, 'title' => 'LARAVEL', 'slug' => 'laravel'],
-        ['id' => 3, 'title' => 'JS',      'slug' => 'js'],
-    ];
+Route::get('blog/{slug}', [PageController::class, 'post'])->name('post');
 
-    return view('blog', ['posts' => $posts]);
-})->name('blog');
+Route::get('buscar/{recibido}', [PageController::class, 'buscar'])->name('buscar');
+*/
 
-Route::get('blog/{slug}', function ($slug) {
-    //Consulta a base de datos
-    $post = $slug;
+//Hay una mejor forma de escribir eso
+Route::controller(PageController::class)->group(function(){
 
-    return view('post', ['post' => $post]);
-})->name('post');
+    Route::get('/',                  'home' )->name('home');
+    Route::get('blog',               'blog')->name('blog');
+    Route::get('blog/{slug}',        'post')->name('post');
+    Route::get('buscar/{recibido}',  'buscar')->name('buscar');
 
-Route::get('buscar', function (Request $request) {
-    //Consulta a base de datos
-    return $request->all();
-})->name('buscar');
+});
