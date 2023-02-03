@@ -10,6 +10,13 @@
     <p>
         <a href="{{ route('home') }}">HOME</a>
         <a href="{{ route('blog') }}">BLOG</a>
+
+        @auth
+            <a href="{{ route('dashboard') }}">Dashboard</a>
+        @else
+            <a href="{{ route('login') }}">LOGIN</a>
+            <a href="{{ route('register') }}">REGISTRO</a>
+        @endauth
     </p>
 
     <hr>
