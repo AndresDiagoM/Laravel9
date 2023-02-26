@@ -16,6 +16,7 @@
 
     @endforeach
 
+    {{-- Links del paginador --}}
     {{ $posts->links() }}
 
 @endsection
