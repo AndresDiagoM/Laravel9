@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Post; //Importar el modelo de la tabla posts
+
 class PostController extends Controller
 {
     //vista index
     public function index(){
-        return view('posts.index');
+        return view('posts.index', [
+            'posts' => Post::latest()->paginate()
+        ]);
     }
 
     //vista create

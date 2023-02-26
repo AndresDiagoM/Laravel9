@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'user_id' => rand(1, 2), //Un post pertenece a un usuario, rand(1, 2) 
             'title' => $title = $this->faker->sentence(),
             'slug' => Str::slug($title),
-            'body' => $this->faker->text(2200),
+            'body' => $this->faker->text(1000), //2200 caracteres, but better 1000
 
         ];
     }
