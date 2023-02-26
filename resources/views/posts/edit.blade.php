@@ -11,9 +11,17 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Listado de publicaciones!") }}
 
+                    <form action="{{ route('posts.update', $post) }}" method="POST">
+                        
+                        @method('PUT')
+                        @include('posts._form')
+
+                    </form>
+
 
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+

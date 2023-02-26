@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex items-center justify-between"> {{-- justify-between añade espacio entre los elementos --}}
             {{ __('Posts') }}
+
+            <a href="{{ route('posts.create') }}"
+                class="text-xs bg-blue-800 text-white rounded py-1 px-2"> Crear publicación</a>
         </h2>
     </x-slot>
 
@@ -33,7 +36,8 @@
                                     <td class="px-6 py-4">{{ $post->created_at }}</td>
                                     <td class="px-6 py-4">{{ $post->updated_at }}</td>
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('posts.edit', $post) }}">Editar</a>
+                                        <a href="{{ route('posts.edit', $post) }}"
+                                        class="bg-green-800 text-white rounded px-4 py-2">Editar</a>
                                     </td>
                                     <td class="px-6 py-4">
                                         <form action="{{ route('posts.destroy', $post) }}" method="POST">

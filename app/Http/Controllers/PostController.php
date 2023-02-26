@@ -26,8 +26,8 @@ class PostController extends Controller
     }
 
     //vista edit
-    public function edit(){
-        return view('posts.edit');
+    public function edit(Post $post){
+        return view('posts.edit', ['post' => $post]);
     }
 
     //vista update
