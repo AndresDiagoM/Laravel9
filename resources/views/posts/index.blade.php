@@ -26,18 +26,23 @@
                         <tbody>
                             @foreach ($posts as $post)
                                 <tr class="border-b border-gray-200 text-sm">
-                                    <td>{{ $post->id }}</td>
-                                    <td>{{ $post->title }}</td>
-                                    <td>{{ $post->slug }}</td>
-                                    <td>{{ $post->body }}</td>
-                                    <td>{{ $post->created_at }}</td>
-                                    <td>{{ $post->updated_at }}</td>
-                                    <td>
+                                    <td class="px-6 py-4">{{ $post->id }}</td>
+                                    <td class="px-6 py-4">{{ $post->title }}</td>
+                                    <td class="px-6 py-4">{{ $post->slug }}</td>
+                                    <td class="px-6 py-4">{{ $post->body }}</td>
+                                    <td class="px-6 py-4">{{ $post->created_at }}</td>
+                                    <td class="px-6 py-4">{{ $post->updated_at }}</td>
+                                    <td class="px-6 py-4">
                                         <a href="{{ route('posts.edit', $post) }}">Editar</a>
+                                    </td>
+                                    <td class="px-6 py-4">
                                         <form action="{{ route('posts.destroy', $post) }}" method="POST">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit">Eliminar</button>
+                                            <input type="submit" 
+                                                value="Eliminar"
+                                                class="bg-red-800 text-white rounded px-4 py-2"
+                                                onclick="return confirm('Desea eliminar?')">
                                         </form>
                                     </td>
                                 </tr>

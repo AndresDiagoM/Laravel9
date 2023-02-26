@@ -36,8 +36,10 @@ class PostController extends Controller
     }
 
     //vista destroy
-    public function destroy(){
-        return view('posts.destroy');
+    public function destroy(Post $post){
+        $post->delete();
+        return back();
+        //return view('posts.destroy');
     }
 
 }
