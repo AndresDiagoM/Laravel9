@@ -16,8 +16,8 @@ class PostController extends Controller
     }
 
     //vista create
-    public function create(){
-        return view('posts.create');
+    public function create(Post $post){
+        return view('posts.create', ['post' => $post]);
     }
 
     //vista show
