@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'slug', 'body' ];
+
     //Relación uno a muchos inversa
 
     public function user(){
