@@ -43,7 +43,7 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    //vista update
+    //vista update 
     public function update(Request $request, Post $post){
 
         $post->update([
@@ -51,7 +51,7 @@ class PostController extends Controller
             'slug' => Str::slug($title),
             'body' => $request->body,
         ]);
-        //es con user porque el post pertenece a un usuario
+        //Funcion de editar post
 
         return redirect()->route('posts.edit', $post);
     }
