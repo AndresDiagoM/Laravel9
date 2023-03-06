@@ -1,10 +1,21 @@
 @csrf 
 
 <label class="uppercase text-white-700 text-xs"> Titulo </label>
-<input type="text" name="title" class="rounded text-black border-gray-200 w-full mb-4" value="{{ $post->title }}"> 
+<span class="text-red-500 text-xs"> 
+    @error('title') 
+        {{ $message }}
+    @enderror
+</span>
+<input type="text" name="title" class="rounded text-black border-gray-200 w-full mb-4" value="{{ old('title', $post->title) }}"> 
+{{-- old('title', $post->title) es para que no se borre el campo cuando se envia el formulario y hay un error en el mismo. --}}
 
 <label class="uppercase text-white-700 text-xs"> Contenido </label>
-<textarea name="body" rows="5" class="rounded text-black border-gray-200 w-full mb-4" >{{ $post->body }}</textarea>
+<span class="text-red-500 text-xs"> 
+    @error('body') 
+        {{ $message }}
+    @enderror
+</span>
+<textarea name="body" rows="5" class="rounded text-black border-gray-200 w-full mb-4" >{{ old('body', $post->body) }}</textarea>
 
 
 <div class="flex justify-between items-center">

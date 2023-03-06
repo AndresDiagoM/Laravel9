@@ -23,6 +23,17 @@ class PostController extends Controller
 
     //vista store
     public function store(Request $request){
+
+        //validar los datos
+        $request->validate([
+            'title'=>'required',
+            'body'=>'required',
+        ],[ //para mostrar un mensaje de error en español
+            'title.required'=>'Este campo es requerido',
+            'body.required'=>'Se necesita mínimo un párrafo',
+        ]);
+        //si se envia el formulario sin datos, para mostrar un mensaje es necesario ediar el archivo de la vista _form.blade.php
+
         $post = $request->user()->posts()->create([
             'title' => $title = $request->title,
             'slug' => Str::slug($title),
