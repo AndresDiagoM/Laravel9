@@ -18,7 +18,7 @@
                     <img src="{{ asset('images/chip.png') }}" alt="Logo" class="h-12">
                 </a>
 
-                <form action="{{ route('blog') }}" method="GET">
+                <form action="{{ route('home') }}" method="GET">
                     <input type="text" name="search" placeholder="Buscar...">
                 </form>
             </div>

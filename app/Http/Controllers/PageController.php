@@ -9,24 +9,13 @@ class PageController extends Controller
 {
     //Petición de home
     public function home(){
-        return view('home');
-    }
 
-    //peticion blog
-    public function blog(){
-        //Consulta a base de datos
-        $posts = Post::get(); //Obtener todos los registros de la tabla posts
-        //$posts = Post::first(); //Obtener el primer registro de la tabla posts
-        //$posts = Post::find(25); //Obtener el registro con id 25 de la tabla posts
-
-        //Cuando traemos solo un resultado se usa:
-        //dd($posts);
-
-        //Consulta paginada
+        //Hacer la bísqueda de la vista Blog, en Home. Consulta paginada
         $posts = Post::latest()->paginate(); //devuelve una colleccion de objetos
 
-        return view('blog', ['posts' => $posts]);
+        return view('home', ['posts' => $posts]);
     }
+
 
     //peticion post
     public function post(Post $post){
