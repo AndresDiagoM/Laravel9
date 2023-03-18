@@ -1,11 +1,20 @@
 @extends('template')
     
 @section('content')
-    <h1>HOME</h1>
 
-    <div>
+    <div class="bg-gray-900 px-20 py-16 rounded-lg mb-8 relative overflow-hidden">
         <!-- Destacado -->
+        <span class="text-xs uppercase text-gray-700 bg-gray-400 rounded-full px-2 py-1">Programación </span>
+        <h1 class="text-3xl  text-white mt-4">Blog</h1>
+        <p class="text-sm text-gray-400 mt-2">Proyecto de desarrollo web para profesionales</p>
+
+        <img src="{{ asset('images/robot.png') }}" class="absolute -right-20 -bottom-20 opacity-40" width="300" height="150" >
+        {{-- Se necesita que la imagen tenga una posicion absoluta dentro del div, entonces 
+            se necesita que el div sea relativo
+            overflow-hidden: para que lo que se salga del div se oculte
+        --}}
     </div>
+
 
     <div class="px-4">
         <h1 class="text-2xl mb-8 text-gray-900">Contenido Técnico</h1>
