@@ -14,7 +14,9 @@ class PageController extends Controller
         $buscar = $request->search;
 
         //hacer la búsqueda
-        $postEncontrados = Post::where('title', 'like', "%$buscar%")->latest()->paginate();
+        $postEncontrados = Post::where('title', 'like', "%$buscar%")
+        ->with('user') //traer la información de los uusarios también
+        ->latest()->paginate();
 
         //Hacer la bísqueda de la vista Blog, en Home. Consulta paginada
         $posts = Post::latest()->paginate(); //devuelve una colleccion de objetos
