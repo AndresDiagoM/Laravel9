@@ -19,9 +19,7 @@ Route::controller(PageController::class)->group(function(){
 /**
  * Rutas de autenticación
  */
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::redirect('dashboard', 'posts' )->name('dashboard');
 
 /**
  * Rutas de perfil
@@ -35,7 +33,7 @@ Route::middleware('auth')->group(function () {
 /**
  * Rutas de administración
  */
-Route::resource('posts', PostController::class)->except('show');
+Route::resource('posts', PostController::class)->middleware(['auth', 'verified'])->except('show');
 //Cuando veamos "php artisan route:list --path=posts", no aparece la ruta show
 
 require __DIR__.'/auth.php';

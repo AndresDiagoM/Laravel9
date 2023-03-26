@@ -10,6 +10,7 @@ class PageController extends Controller
     //Petición de home
     public function home(Request $request){
 
+        //dd($request->all()); //para debugear y observar la variable
         //Recuperar el valor del input de la vista buscar
         $buscar = $request->search;
 
