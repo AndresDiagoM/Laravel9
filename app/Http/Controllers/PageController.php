@@ -8,12 +8,18 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     //Petición de home
-    public function home(){
+    public function home(Request $request){
+
+        //Recuperar el valor del input de la vista buscar
+        $buscar = $request->search;
+
+        //hacer la búsqueda
+        $postEncontrados = Post::where('title', 'like', "%$buscar%")->latest()->paginate();
 
         //Hacer la bísqueda de la vista Blog, en Home. Consulta paginada
         $posts = Post::latest()->paginate(); //devuelve una colleccion de objetos
 
-        return view('home', ['posts' => $posts]);
+        return view('home', ['posts' => $postEncontrados]);
     }
 
 
@@ -27,11 +33,9 @@ class PageController extends Controller
 
     //peticion buscar
     public function buscar($recibido){
-            //Consulta a base de datos
-        //return $request->all();
+        //Consulta a base de datos con el parametro recibido
+        $postEncontrados = Post::where('title', 'like', "%$recibido%")->get();
 
-        $request = $recibido;
-
-        return view('buscar', ['request' => $request]);
+        return view('home', ['posts' => $postEncontrados]);
     }
 }

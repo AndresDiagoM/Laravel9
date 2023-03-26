@@ -18,8 +18,12 @@
                     <img src="{{ asset('images/chip.png') }}" alt="Logo" class="h-12">
                 </a>
 
-                <form action="{{ route('home') }}" method="GET">
-                    <input type="text" name="search" placeholder="Buscar...">
+                {{-- Cuadro de busqueda --}}
+                <form action="{{ route('home') }}" method="GET" class="flex-grow">
+                    <input type="text" name="search" placeholder="Buscar..." 
+                    value="{{ request('search') }}"
+                    class="border border-gray-200 rounded py-2 px-4 w-1/2">
+                    {{-- request('search'): Para recuperar el valor que se introduce --}}
                 </form>
             </div>
 
